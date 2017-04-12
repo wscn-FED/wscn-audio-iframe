@@ -1,8 +1,6 @@
 <template>
-  <div class="wscn-page">
-    <div v-if="audio">
-      <wscn-audio :src="audio.uri" :title="audio.title" :width="width"></wscn-audio>
-    </div>
+  <div class="wscn-page" v-if="audio">
+    <wscn-audio :src="audio.src" :title="audio.title" :width="width"></wscn-audio>
   </div>
 </template>
 
@@ -21,25 +19,43 @@
       }
     },
     created() {
-      const pathnames = location.pathname.split('/')
-      if (pathnames && pathnames.length) {
-        const len = pathnames.length
-        const id = pathnames[len - 1]
-        api.getArticle(id).then(res => {
+      this.width = window.innerWidth
+      const params = this.getParams()
+      if (!params.src) {
+        api.getArticle(params.id).then(res => {
           if (res.data) {
             if (res.data.content_args && res.data.content_args.length) {
               res.data.content_args.forEach(item => {
                 if (item.type && item.type === 'audio') {
-                  this.audio = item
+                  this.audio = {
+                    src: item.uri,
+                    title: item.title || ''
+                  }
                 }
               })
             }
           }
         })
+      } else {
+        this.audio = {
+          src: decodeURIComponent(params.src),
+          title: decodeURIComponent(params.title) || ''
+        }
       }
     },
-    mounted() {
-      this.width = window.innerWidth
+    methods: {
+      getParams() {
+        const search = location.search.slice(1)
+        const arr = search.split('&')
+        let params = {}
+        arr.forEach(item => {
+          if (item) {
+            const temp = item.split('=')
+            params[temp[0]] = temp[1]
+          }
+        })
+        return params
+      }
     }
   }
 </script>
