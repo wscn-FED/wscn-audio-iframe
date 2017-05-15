@@ -2,8 +2,7 @@
   <div class="ryaudio"
        :class="className">
     <div class="ryaudio-body">
-      <div class="ryaudio-container"
-           :style="`width: ${width}px;`">
+      <div class="ryaudio-container">
         <audio :src="src"
                preload="auto"
                ref="audio">
@@ -207,10 +206,12 @@
   display: flex;
   align-items: center;
   background-color: #f2f2f2;
+  width: 100%;
 }
 
 .ryaudio-body {
   height: 60px;
+  flex: 1 1;
   background-color: #fff;
 }
 
