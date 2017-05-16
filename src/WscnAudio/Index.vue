@@ -211,8 +211,8 @@
 .ryaudio-body {
   flex: 1 1;
   background-color: #fff;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 .ryaudio-controls {
@@ -222,8 +222,6 @@
 .ryaudio-controls-inner {
   display: flex;
   align-items: center;
-  padding-left: 15px;
-  padding-right: 15px;
 }
 
 .ryaudio-controls-play-pause {
