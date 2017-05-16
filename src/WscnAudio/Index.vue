@@ -202,7 +202,6 @@
 
 <style lang="scss" scoped>
 .ryaudio {
-  height: 66px;
   display: flex;
   align-items: center;
   background-color: #f2f2f2;
@@ -210,9 +209,10 @@
 }
 
 .ryaudio-body {
-  height: 60px;
   flex: 1 1;
   background-color: #fff;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .ryaudio-controls {
@@ -222,7 +222,6 @@
 .ryaudio-controls-inner {
   display: flex;
   align-items: center;
-  height: 60px;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -253,15 +252,10 @@
   color: #333;
   padding-left: 10px;
   padding-top: 2px;
+  padding-bottom: 5px;
   display: block;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
   word-wrap: break-word;
-  overflow-wrap: break-word;
   word-break: break-all;
-  overflow: hidden;
 }
 
 .ryaudio-controls-play,
